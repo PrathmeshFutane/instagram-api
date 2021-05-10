@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Feed</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css"
+        integrity="sha512-byErQdWdTqREz6DLAA9pCnLbdoGGhXfU6gm1c8bkf7F51JVmUBlayGe2A31VpXWQP+eiJ3ilTAZHCR3vmMyybA=="
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    <div class="container ">
+        <div class="content" style="width: 50%; border: 2px solid grey; padding: 20px;margin: 20px;">
+            <div class="title has-text-centered mt-5">
+                Instagram API Javascript
+            </div>
+            <div class="block ">
+                <form id="myForm" autocomplete="off">
+                    <div class="field">
+                        <label class="label">Instagram Id</label>
+                        <div class="control">
+                            <input class="input" id="handle" name="handle" type="text" placeholder="Instagram Id">
+                        </div>
+                    </div>
+                    <button class="button is-primary">Send</button>
+                </form>
+
+               
+                
+            </div>
+        </div>
+
+      
+
+        <div class="container">
+            <div id="instagram-feed-demo" class="instagram_feed"></div>
+        </div>
+
+        
+    </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="Instagram-Photos-Without-API-instagramFeed/jquery.instagramFeed.min.js"></script>
+
+<script>
+    $(document).ready(()=>{
+        $('#myForm').submit((e)=>{
+            e.preventDefault();
+
+            let handle = $('#handle').val();
+            
+            $.instagramFeed({
+                'username': handle,
+                'container': "#instagram-feed-demo",
+                'display_profile': true,
+                'display_biography': true,
+                'display_gallery': true,
+                'display_captions': false,
+                'display_igtv': false,
+                'lazy_load': true,
+                "item":12
+            })
+
+            var image_sizes = {
+                "150": 0,
+                "240": 1,
+                "320": 2,
+                "480": 3,
+                "640": 4
+            };
+        })
+
+        
+    })
+
+    
+</script>
+</html>
